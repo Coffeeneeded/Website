@@ -6,7 +6,7 @@ using System.Text;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ThiagoVivas;
-using ThiagoVivas.Controllers;
+using Interface.Controllers;
 
 namespace ThiagoVivas.Tests.Controllers
 {

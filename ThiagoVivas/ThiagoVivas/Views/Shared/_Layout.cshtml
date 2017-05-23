@@ -1,12 +1,11 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="InterfaceCoreModule" >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
+    </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -34,8 +33,8 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Angular")
+    @Scripts.Render("~/bundles/Interface")
     @RenderSection("scripts", required: false)
 </body>
 </html>
