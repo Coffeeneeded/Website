@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ThiagoVivas
+namespace TVPresentation
 {
     public class BundleConfig
     {
@@ -20,6 +20,7 @@ namespace ThiagoVivas
             bundles.Add(new ScriptBundle("~/bundles/Angular").Include(
                       "~/Scripts/Angular/angular.min.js",
                       "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
+                      "~/Scripts/Bootstrap/bootstrap.min.js",
                       "~/Scripts/Bootstrap/jquery-1.9.0.min.js",
                       "~/Scripts/Angular/angular-route.min.js"));
 

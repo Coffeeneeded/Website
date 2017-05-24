@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "ThiagoVivas\Interface.csproj", "{334FFF20-D2C8-4C31-9D57-A7B43B569EF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVPresentation", "ThiagoVivas\TVPresentation.csproj", "{334FFF20-D2C8-4C31-9D57-A7B43B569EF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThiagoVivas.Tests", "ThiagoVivas.Tests\ThiagoVivas.Tests.csproj", "{9CBD5360-01AA-48B2-9C3E-FAFB5C22D393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVService", "TVService\TVService.csproj", "{C3F56708-A513-47F6-9663-D17F6F4A1FA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVBusiness", "TVBusiness\TVBusiness.csproj", "{80D8716C-6C47-4466-BD60-33882867DF9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVData", "TVData\TVData.csproj", "{252D6E9D-9EBF-48BC-8B88-1988FE89356F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVShared", "TVShared\TVShared.csproj", "{9DF24901-1F34-4565-A175-51DF91F63B91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{9CBD5360-01AA-48B2-9C3E-FAFB5C22D393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CBD5360-01AA-48B2-9C3E-FAFB5C22D393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CBD5360-01AA-48B2-9C3E-FAFB5C22D393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F56708-A513-47F6-9663-D17F6F4A1FA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F56708-A513-47F6-9663-D17F6F4A1FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F56708-A513-47F6-9663-D17F6F4A1FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F56708-A513-47F6-9663-D17F6F4A1FA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D8716C-6C47-4466-BD60-33882867DF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D8716C-6C47-4466-BD60-33882867DF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D8716C-6C47-4466-BD60-33882867DF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D8716C-6C47-4466-BD60-33882867DF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252D6E9D-9EBF-48BC-8B88-1988FE89356F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252D6E9D-9EBF-48BC-8B88-1988FE89356F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252D6E9D-9EBF-48BC-8B88-1988FE89356F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252D6E9D-9EBF-48BC-8B88-1988FE89356F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF24901-1F34-4565-A175-51DF91F63B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF24901-1F34-4565-A175-51DF91F63B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF24901-1F34-4565-A175-51DF91F63B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF24901-1F34-4565-A175-51DF91F63B91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

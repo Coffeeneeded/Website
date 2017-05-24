@@ -103,9 +103,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThiagoVivas\Interface.csproj">
+    <ProjectReference Include="..\ThiagoVivas\TVPresentation.csproj">
       <Project>{334FFF20-D2C8-4C31-9D57-A7B43B569EF3}</Project>
-      <Name>Interface</Name>
+      <Name>TVPresentation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
