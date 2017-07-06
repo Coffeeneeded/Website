@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TVRepository", "TVRepository\TVRepository.csproj", "{86E50147-7F45-4313-B143-7DDF61FBBE70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TVCommon", "TVCommon\TVCommon.csproj", "{0E9E2F09-6818-441C-8E88-9D254AE40B47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TVService", "TVService\TVService.csproj", "{890E124C-97DD-40DB-AEC9-5008F9E82B28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TVWeb", "TVWeb\TVWeb.csproj", "{C752352F-D682-4917-96CB-069CB83D49F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86E50147-7F45-4313-B143-7DDF61FBBE70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E50147-7F45-4313-B143-7DDF61FBBE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E50147-7F45-4313-B143-7DDF61FBBE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E50147-7F45-4313-B143-7DDF61FBBE70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E9E2F09-6818-441C-8E88-9D254AE40B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9E2F09-6818-441C-8E88-9D254AE40B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9E2F09-6818-441C-8E88-9D254AE40B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9E2F09-6818-441C-8E88-9D254AE40B47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890E124C-97DD-40DB-AEC9-5008F9E82B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890E124C-97DD-40DB-AEC9-5008F9E82B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890E124C-97DD-40DB-AEC9-5008F9E82B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890E124C-97DD-40DB-AEC9-5008F9E82B28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C752352F-D682-4917-96CB-069CB83D49F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C752352F-D682-4917-96CB-069CB83D49F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C752352F-D682-4917-96CB-069CB83D49F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C752352F-D682-4917-96CB-069CB83D49F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
