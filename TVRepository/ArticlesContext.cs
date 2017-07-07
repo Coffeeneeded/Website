@@ -14,9 +14,6 @@ namespace TVRepository
         {
 
         }
-
-
-
         public DbSet<Artigo> Artigos { get; set; }
 
         public DbSet<ArtigoTag> ArtigoTags { get; set; }
@@ -36,14 +33,14 @@ namespace TVRepository
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Artigo>()
-                .HasMany(x => (ICollection<Tag>)x.Tags)
+                .HasMany(x => (ICollection<ArtigoTag>)x.ArtigoTags)
                 .WithOne()
-                .HasForeignKey(x => x.IdTag);
+                .HasForeignKey(x => x.IdArtigoTag);
 
             modelBuilder.Entity<Tag>()
-                .HasMany(x => (ICollection<Artigo>)x.Artigos)
+                .HasMany(x => (ICollection<ArtigoTag>)x.ArtigoTags)
                 .WithOne()
-                .HasForeignKey(x => x.IdArtigo);
+                .HasForeignKey(x => x.IdArtigoTag);
 
             modelBuilder.Entity<Artigo>()
                 .HasMany(x => (ICollection<Imagem>)x.Imagens)
@@ -54,17 +51,6 @@ namespace TVRepository
                 .HasMany(x => (ICollection<RedeSocialPessoa>)x.RedesSociaisPessoa)
                 .WithOne()
                 .HasForeignKey(x => x.IdPessoa);
-
-            modelBuilder.Entity<ArtigoTag>()
-                .HasOne(x => x.Artigo)
-                .WithOne(x => x.ArtigoTag)
-                .HasForeignKey<ArtigoTag>(x => x.IdArtigo);
-
-
-            modelBuilder.Entity<ArtigoTag>()
-                .HasOne(x => x.Tag)
-                .WithOne(x => x.ArtigoTag)
-                .HasForeignKey<ArtigoTag>(x => x.IdTag);
 
 
             foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(x => x.GetForeignKeys()))

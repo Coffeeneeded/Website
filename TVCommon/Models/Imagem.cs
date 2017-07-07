@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TVCommon.Models
@@ -19,5 +20,8 @@ namespace TVCommon.Models
         public int PosicaoEsq { get; set; }
 
         public int PosicaoTop { get; set; }
+
+        [ForeignKey("Artigo")]
+        public long IdArtigo { get; set; }
     }
 }

@@ -15,8 +15,7 @@ namespace TVCommon.Models
         public long IdArtigo { get; set; }
 
         public long QuantidadeViews { get; set; }
-
-        public ICollection<Tag> Tags { get; set; }
+        
 
         public ICollection<Imagem> Imagens { get; set; }
 
@@ -24,6 +23,6 @@ namespace TVCommon.Models
 
         public string Titulo { get; set; }
 
-        public ArtigoTag ArtigoTag { get; set; }
+        public ICollection<ArtigoTag> ArtigoTags { get; set; }
     }
 }

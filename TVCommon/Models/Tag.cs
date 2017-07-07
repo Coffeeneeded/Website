@@ -6,12 +6,10 @@ namespace TVCommon.Models
 {
     public class Tag
     {
-        public ICollection<Artigo> Artigos { get; set; }
-
         [Key]
         public long IdTag { get; set; }
 
         public string Nome { get; set; }
-        public ArtigoTag ArtigoTag { get; set; }
+        public ICollection<ArtigoTag> ArtigoTags { get; set; }
     }
 }
