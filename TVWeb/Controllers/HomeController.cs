@@ -17,8 +17,7 @@ namespace ThiagoVivas.Controllers
         }
         public IActionResult Index()
         {
-            var x = this._service.Get();
-            return View();
+                        return View();
         }
 
         public IActionResult Error()

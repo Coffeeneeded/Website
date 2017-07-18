@@ -14,11 +14,7 @@ namespace TVRepository.Data
         {
             this._dependency = dependecy;
         }
-
-        public string get()
-        {
-            return this._dependency.Autores.FirstOrDefault().Biografia;
-        }
+        
 
         #region Artigo
 
@@ -429,9 +425,58 @@ namespace TVRepository.Data
 
         #region Busca
 
+        public List<RedeSocial> GetRedeSociais()
+        {
+            List<RedeSocial> retorno = new List<RedeSocial>();
+
+            try
+            {
+                retorno = this._dependency.RedeSociais.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
+        public RedeSocial GetRedeSociais(long idRedeSocial)
+        {
+            RedeSocial retorno = new RedeSocial();
+
+            try
+            {
+                retorno = this._dependency.RedeSociais.FirstOrDefault(x => x.IdRedeSocial == idRedeSocial);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
+
         #endregion
 
         #region Criacao
+
+        public long CreateRedeSocial(RedeSocial obj)
+        {
+            long retorno = 0;
+
+            try
+            {
+                this._dependency.RedeSociais.Add(obj);
+                retorno = obj.IdRedeSocial;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return retorno;
+        }
 
         #endregion
 
@@ -441,9 +486,47 @@ namespace TVRepository.Data
 
         #region Busca
 
+        public List<RedeSocialPessoa> GetRedeSociaisPessoa(long idPessoa)
+        {
+            List<RedeSocialPessoa> retorno = new List<RedeSocialPessoa>();
+
+            try
+            {
+                retorno = this._dependency.RedeSocialPessoas.Where(x => x.IdPessoa == idPessoa).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
+
         #endregion
 
         #region Criacao
+
+        public long[] CreateRedeSociaisPessooa(List<RedeSocialPessoa> objs)
+        {
+            long[] retorno = new long[objs.Count];
+            long counter = 0;
+
+            try
+            {
+                foreach (RedeSocialPessoa obj in objs)
+                {
+                    this._dependency.RedeSocialPessoas.Add(obj);
+                    retorno[counter] = obj.IdRedeSocialPessoa;
+                    counter++;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
 
         #endregion
 
@@ -453,9 +536,61 @@ namespace TVRepository.Data
 
         #region Busca
 
+        public List<Tag> GetTags()
+        {
+            List<Tag> retorno = new List<Tag>();
+
+            try
+            {
+                retorno = this._dependency.Tags.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
+        public List<Tag> GetTags(string nomeTag)
+        {
+            List<Tag> retorno = new List<Tag>();
+
+            try
+            {
+                retorno = this._dependency.Tags.Where(x => x.Nome == nomeTag).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
+
         #endregion
 
         #region Criacao
+
+        public long[] CreateTags(List<Tag> objs)
+        {
+            long[] retorno = new long[objs.Count];
+            long counter = 0;
+            try
+            {
+                foreach (Tag obj in objs)
+                {
+                    this._dependency.Tags.Add(obj);
+                    retorno[counter] = obj.IdTag;
+                    counter++;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
 
         #endregion
 

@@ -7,6 +7,7 @@ namespace TVCommon.Models
 {
     public class Artigo
     {
+        
         public DateTime DataPublicacao { get; set; }
 
         public string GitHubCodeURL { get; set; }
