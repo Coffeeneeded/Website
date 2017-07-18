@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TVCommon.Models;
 using TVCommon.ViewModels;
+using TVService.Contracts;
 
 namespace TVWeb.Controllers
 {
@@ -13,32 +14,37 @@ namespace TVWeb.Controllers
     [Route("api/Article")]
     public class ArticleController : Controller
     {
-        [HttpGet]
-        public IActionResult Get()
+
+        public readonly IArticleService _service;
+
+        public ArticleController(IArticleService service)
         {
-            return null;
+            this._service = service;
+        }
+
+        [HttpGet]
+        public IEnumerable<Artigo> Get()
+        {
+            return this._service.GetArtigos();
         }
         [HttpGet("{month}/{year}")]
         public IEnumerable<Artigo> Get(int month, int year)
         {
-            IEnumerable<Artigo> retorno = null;
-
+            IEnumerable<Artigo> retorno = this._service.GetArtigos(year, month);
 
             return retorno;
         }
         [HttpGet("{year}")]
         public IEnumerable<Artigo> Get(int year)
         {
-            IEnumerable<Artigo> retorno = null;
-
+            IEnumerable<Artigo> retorno = this._service.GetArtigos(year);
 
             return retorno;
         }
         [HttpGet("{tittle}", Name = "GetArtigo")]
         public IActionResult Get(string tittle)
         {
-            Artigo retorno = new Artigo();
-
+            Artigo retorno = this._service.GetArtigo(tittle);
 
             return new ObjectResult(retorno);
         }
@@ -46,14 +52,11 @@ namespace TVWeb.Controllers
         [HttpPost("Create")]
         public IActionResult Create([FromBody] CreateArtigoViewMmodel obj)
         {
-
             return CreatedAtRoute("GetArtigo", new { tittle = obj.Artigo.Titulo });
-            //return CreatedAtRoute("GetArtigo", new { tittle = obj.Titulo }, obj);
         }
         [HttpGet("Create")]
         public IActionResult Create()
         {
-
             return View();
         }
     }

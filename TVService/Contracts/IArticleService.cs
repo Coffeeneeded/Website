@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TVCommon.Models;
+using TVCommon.ViewModels;
 
 namespace TVService.Contracts
 {
@@ -16,7 +17,7 @@ namespace TVService.Contracts
         List<Artigo> GetArtigosBuscaTexto(string busca);
         List<Artigo> GetArtigosBuscaTitulo(string busca);
         List<Artigo> GetArtigosBuscaTituloETexto(string busca);
-        long CreateArtigo(Artigo obj);
+        long CreateArtigo(CreateArtigoViewMmodel obj);
         List<ArtigoTag> GetArtigoTag();
         List<ArtigoTag> GetArtigoTagPorArtigo(int idArtigo);
         List<ArtigoTag> GetArtigoTagPorTag(int idTag);

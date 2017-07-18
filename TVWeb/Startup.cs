@@ -15,6 +15,8 @@ using TVRepository.Data;
 using TVService;
 using TVService.Contracts;
 using TVRepository;
+using TVCommon.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ThiagoVivas
 {
@@ -38,8 +40,38 @@ namespace ThiagoVivas
 
             services.AddDbContext<ArticlesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddIdentity<Autor, IdentityRole>()
+            //    .AddEntityFrameworkStores<ArticlesContext>()
+            //    .AddDefaultTokenProviders();
+
             // Add framework services.
             var mvcBuilder = services.AddMvc();
+
+
+            //configure identity
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    // Password settings
+            //    options.Password.RequireDigit = true;
+            //    options.Password.RequiredLength = 8;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireUppercase = true;
+            //    options.Password.RequireLowercase = false;
+
+            //    // Lockout settings
+            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+            //    options.Lockout.MaxFailedAccessAttempts = 10;
+
+            //    // Cookie settings
+            //    options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+            //    options.Cookies.ApplicationCookie.LoginPath = "/Account/LogIn";
+            //    options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
+
+            //    // User settings
+            //    options.User.RequireUniqueEmail = true;
+            //});
+
+
 
             services.AddTransient<IArticleService, ArticleService>();
             services.AddScoped<IArticlesDAL, ArticlesDAL>();
@@ -70,6 +102,7 @@ namespace ThiagoVivas
             }
 
             app.UseStaticFiles();
+            //app.UseIdentity();
 
             app.UseMvc(routes =>
             {

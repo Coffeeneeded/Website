@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TVCommon.Models;
+using TVCommon.ViewModels;
 using TVRepository.Interface;
 using TVService.Contracts;
 
@@ -15,9 +16,52 @@ namespace TVService
             this.dependency = _dependency;
         }
 
-        public long CreateArtigo(Artigo obj)
+        public long CreateArtigo(CreateArtigoViewMmodel obj)
         {
-            return dependency.CreateArtigo(obj);
+            long retorno = 0;
+            try
+            {
+                retorno = dependency.CreateArtigo(obj.Artigo);
+                if (retorno > 0)
+                {
+                    List<Tag> lstTag = new List<Tag>();
+                    List<ArtigoTag> lstArtigoTag = new List<ArtigoTag>();
+                    ArtigoTag objArtigoTag;
+                    Tag objTag;
+
+                    obj.Imagens.ForEach(x => x.IdArtigo = retorno);
+
+                    foreach (var item in obj.Tags.Split())
+                    {
+                        objTag = new Tag();
+
+                        objTag.Nome = item;
+                        lstTag.Add(objTag);
+                    }
+                    this.CreateImagens(obj.Imagens);
+                    long[] tagsId = this.CreateTags(lstTag);
+
+
+                    foreach (long idTag in tagsId)
+                    {
+                        objArtigoTag = new ArtigoTag();
+
+                        objArtigoTag.IdArtigo = retorno;
+                        objArtigoTag.IdTag = idTag;
+
+                        lstArtigoTag.Add(objArtigoTag);
+                    }
+
+                    this.CreateArtigoTag(lstArtigoTag);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
         }
 
         public long[] CreateArtigoTag(List<ArtigoTag> objs)

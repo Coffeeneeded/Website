@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TVCommon.Models
 {
     public class Artigo
     {
-        
+
         public DateTime DataPublicacao { get; set; }
 
         public string GitHubCodeURL { get; set; }
@@ -16,7 +17,7 @@ namespace TVCommon.Models
         public long IdArtigo { get; set; }
 
         public long QuantidadeViews { get; set; }
-        
+
 
         public ICollection<Imagem> Imagens { get; set; }
 
@@ -25,5 +26,6 @@ namespace TVCommon.Models
         public string Titulo { get; set; }
 
         public ICollection<ArtigoTag> ArtigoTags { get; set; }
+        
     }
 }
