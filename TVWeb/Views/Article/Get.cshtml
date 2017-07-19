@@ -1,0 +1,66 @@
+@model IEnumerable<TVCommon.Models.Artigo>
+
+@{
+    ViewData["Title"] = "Get";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Get</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataPublicacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GitHubCodeURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdArtigo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuantidadeViews)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Texto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataPublicacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GitHubCodeURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdArtigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeViews)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Texto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

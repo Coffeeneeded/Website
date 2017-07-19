@@ -23,10 +23,15 @@ namespace TVWeb.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Artigo> Get()
+        public IActionResult Get()
         {
-            return this._service.GetArtigos();
+            return View(this._service.GetArtigos());
+
+            //IEnumerable<Artigo> retorno = this._service.GetArtigos();
+
+            //return retorno;
         }
+        
         [HttpGet("{month}/{year}")]
         public IEnumerable<Artigo> Get(int month, int year)
         {
