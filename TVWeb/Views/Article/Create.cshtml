@@ -2,10 +2,11 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <h2>Create</h2>
-
+<link href="~/css/bootstrap-tagsinput.css" rel="stylesheet" />
 <form asp-action="Create">
     <div class="form-horizontal">
         <h4>Artigo</h4>
@@ -22,7 +23,7 @@
         <div class="form-group">
             <label asp-for="Tags" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Tags" class="form-control" />
+                <input asp-for="Tags" data-role="tagsinput" class="form-control" />
                 <span asp-validation-for="Tags" class="text-danger"></span>
             </div>
         </div>
@@ -30,7 +31,7 @@
         <div class="form-group">
             <label asp-for="Artigo.Texto" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Artigo.Texto" class="form-control" />
+                <textarea asp-for="Artigo.Texto" class="form-control" style="height:100%;width:100%; min-height:200px"></textarea>
                 <span asp-validation-for="Artigo.Texto" class="text-danger"></span>
             </div>
         </div>
@@ -48,11 +49,18 @@
         </div>
     </div>
 </form>
-
+<pre class="prettyprint linenums">
+        public DbSet<Autor> Autores { get; set; }<br />
+        public DbSet<Imagem> Imagens { get; set; }<br />
+        public DbSet<RedeSocial> RedeSociais { get; set; }<br />
+        public DbSet<RedeSocialPessoa> RedeSocialPessoas { get; set; } 
+        string g = "sads";
+</pre>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/bootstrap-tagsinput.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 }

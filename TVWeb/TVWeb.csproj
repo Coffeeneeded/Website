@@ -29,6 +29,11 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="wwwroot\css\bootstrap-tagsinput.css" />
+    <Content Include="wwwroot\css\tags.css" />
+    <Content Include="wwwroot\js\bootstrap-tagsinput.js" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\TVService\TVService.csproj" />
   </ItemGroup>
 <ItemGroup>
@@ -49,8 +54,6 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
-<Target Name="ResolveNuGetPackageAssets"
-         DependsOnTargets="$(ResolveNuGetPackageAssetsDependsOn)"
-         Condition="'$(ResolveNuGetPackages)' == 'true' and exists('$(ProjectLockFile)')">
+<Target Name="ResolveNuGetPackageAssets" DependsOnTargets="$(ResolveNuGetPackageAssetsDependsOn)" Condition="'$(ResolveNuGetPackages)' == 'true' and exists('$(ProjectLockFile)')">
 </Target>
 </Project>

@@ -26,7 +26,6 @@ namespace TVRepository.Interface
         Autor GetAutor(string nome);
         Autor GetAutor(long id);
         long CreateAutor(Autor obj);
-        List<Imagem> GetImagensPorArtigo(long idArtigo);
         Imagem GetImagens(long idImagem);
         long[] CreateImagens(List<Imagem> objs);
         List<RedeSocial> GetRedeSociais();

@@ -8,8 +8,6 @@ namespace TVCommon.Models
 {
     public class Imagem
     {
-        public Artigo Artigo { get; set; }
-
         public string Caminho { get; set; }
 
         [Key]
@@ -20,8 +18,6 @@ namespace TVCommon.Models
         public int PosicaoEsq { get; set; }
 
         public int PosicaoTop { get; set; }
-
-        [ForeignKey("Artigo")]
-        public long IdArtigo { get; set; }
+        
     }
 }

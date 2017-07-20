@@ -18,9 +18,8 @@ namespace TVCommon.Models
 
         public long QuantidadeViews { get; set; }
 
-
-        public ICollection<Imagem> Imagens { get; set; }
-
+       
+        [DataType(DataType.MultilineText)]
         public string Texto { get; set; }
 
         public string Titulo { get; set; }

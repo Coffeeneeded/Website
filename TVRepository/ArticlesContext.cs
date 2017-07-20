@@ -41,12 +41,7 @@ namespace TVRepository
                 .HasMany(x => (ICollection<ArtigoTag>)x.ArtigoTags)
                 .WithOne()
                 .HasForeignKey(x => x.IdArtigoTag);
-
-            modelBuilder.Entity<Artigo>()
-                .HasMany(x => (ICollection<Imagem>)x.Imagens)
-                .WithOne()
-                .HasForeignKey(x => x.IdImagem);
-
+                        
             modelBuilder.Entity<Autor>()
                 .HasMany(x => (ICollection<RedeSocialPessoa>)x.RedesSociaisPessoa)
                 .WithOne()

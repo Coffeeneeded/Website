@@ -10,7 +10,6 @@ namespace TVCommon.ViewModels
         public Artigo Artigo { get; set; }
 
         public string Tags { get; set; }
-
-        public List<Imagem> Imagens { get; set; }
+        
     }
 }

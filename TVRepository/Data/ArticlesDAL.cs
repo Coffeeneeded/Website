@@ -358,21 +358,7 @@ namespace TVRepository.Data
 
         #region Busca
 
-        public List<Imagem> GetImagensPorArtigo(long idArtigo)
-        {
-            List<Imagem> retorno = new List<Imagem>();
-
-            try
-            {
-                retorno = this._dependency.Imagens.Where(x => x.IdArtigo == idArtigo).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return retorno;
-        }
+    
 
         public Imagem GetImagens(long idImagem)
         {
@@ -591,6 +577,8 @@ namespace TVRepository.Data
 
             return retorno;
         }
+
+        
 
         #endregion
 

@@ -29,7 +29,7 @@ namespace TVService
                     ArtigoTag objArtigoTag;
                     Tag objTag;
 
-                    obj.Imagens.ForEach(x => x.IdArtigo = retorno);
+                    
 
                     foreach (var item in obj.Tags.Split())
                     {
@@ -38,7 +38,7 @@ namespace TVService
                         objTag.Nome = item;
                         lstTag.Add(objTag);
                     }
-                    this.CreateImagens(obj.Imagens);
+                    
                     long[] tagsId = this.CreateTags(lstTag);
 
 
@@ -178,11 +178,7 @@ namespace TVService
         {
             return dependency.GetImagens(idImagem);
         }
-
-        public List<Imagem> GetImagensPorArtigo(long idArtigo)
-        {
-            return dependency.GetImagensPorArtigo(idArtigo);
-        }
+        
 
         public List<RedeSocial> GetRedeSociais()
         {
