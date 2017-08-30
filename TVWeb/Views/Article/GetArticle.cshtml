@@ -1,0 +1,56 @@
+@model TVCommon.ViewModels.CreateArtigoViewMmodel
+
+@{
+    ViewData["Title"] = "Article";
+    Layout = "~/Views/Shared/Layout.cshtml";
+
+    List<string>
+    lstTag = new List<string>();
+    lstTag = Model.Tags.Split(' ').ToList();
+}
+
+<link href="~/css/bootstrap-tagsinput.css" rel="stylesheet" />
+<h2>Article</h2>
+
+
+<article class="art-article">
+    <section class="art-article-intern">
+        <header class="art-header">
+            <section class="art-header-tittle"><h1>@Model.Artigo.Titulo</h1> </section>
+            <section class="art-header-dois">
+                <section class="art-header-subtittle">
+                    @Model.Artigo.DataPublicacao <br />
+                    @foreach (string s in lstTag)
+                    {
+                        <a asp-controller="Article"
+                           asp-action="GetTag"
+                           asp-route-tag="@s">
+                            @s
+                        </a>
+                    }
+                </section>
+                <section class="art-header-share">teste hearder-share</section>
+            </section>
+        </header>
+        <section class="art-body">
+            @Model.Artigo.Texto
+        </section>
+    </section>
+</article>
+
+
+@section Scripts{
+
+    <script src="~/js/bootstrap-tagsinput.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sons-of-obsidian"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.art-body').each(function () {
+                var content = $(this).text().replace('comecaaqui', '<pre class="prettyprint linenums">');
+                var zcontent = content.replace('terminaaqui', '</pre>');
+                $(this).html(zcontent);
+            })
+        }); </script>
+}

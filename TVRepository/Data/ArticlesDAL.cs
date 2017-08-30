@@ -14,7 +14,7 @@ namespace TVRepository.Data
         {
             this._dependency = dependecy;
         }
-        
+
 
         #region Artigo
 
@@ -52,7 +52,24 @@ namespace TVRepository.Data
 
             return retorno;
         }
-        public Artigo GetArtigo(int id)
+
+        public List<Artigo> GetArtigoPorArtigoTagId(List<long> lstArtigoTagId)
+        {
+            List<Artigo> retorno = new List<Artigo>();
+
+            try
+            {
+                retorno = this._dependency.ArtigoTags.Where(x => lstArtigoTagId.Contains(x.IdArtigoTag)).Select(x => x.Artigo).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return retorno;
+        }
+        public Artigo GetArtigo(long id)
         {
             Artigo retorno = new Artigo();
 
@@ -195,7 +212,7 @@ namespace TVRepository.Data
 
             return retorno;
         }
-        public List<ArtigoTag> GetArtigoTagPorArtigo(int idArtigo)
+        public List<ArtigoTag> GetArtigoTagPorArtigo(long idArtigo)
         {
             List<ArtigoTag> retorno = new List<ArtigoTag>();
 
@@ -211,13 +228,29 @@ namespace TVRepository.Data
 
             return retorno;
         }
-        public List<ArtigoTag> GetArtigoTagPorTag(int idTag)
+        public List<ArtigoTag> GetArtigoTagPorTag(long idTag)
         {
             List<ArtigoTag> retorno = new List<ArtigoTag>();
 
             try
             {
                 retorno = this._dependency.ArtigoTags.Where(x => x.IdTag == idTag).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return retorno;
+        }
+        public List<ArtigoTag> GetArtigoTagPorTag(string tag)
+        {
+            List<ArtigoTag> retorno = new List<ArtigoTag>();
+
+            try
+            {
+                retorno = this._dependency.ArtigoTags.Where(x => x.Tag.Nome == tag).ToList();
             }
             catch (Exception ex)
             {
@@ -358,7 +391,7 @@ namespace TVRepository.Data
 
         #region Busca
 
-    
+
 
         public Imagem GetImagens(long idImagem)
         {
@@ -537,13 +570,28 @@ namespace TVRepository.Data
 
             return retorno;
         }
-        public List<Tag> GetTags(string nomeTag)
+        public Tag GetTag(string nomeTag)
         {
-            List<Tag> retorno = new List<Tag>();
+            Tag retorno = new Tag();
 
             try
             {
-                retorno = this._dependency.Tags.Where(x => x.Nome == nomeTag).ToList();
+                retorno = this._dependency.Tags.FirstOrDefault(x => x.Nome == nomeTag);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return retorno;
+        }
+
+        public Tag GetTag(long idTag)
+        {
+            Tag retorno = new Tag();
+            try
+            {
+                retorno = this._dependency.Tags.FirstOrDefault(x => x.IdTag == idTag);
             }
             catch (Exception ex)
             {
@@ -578,7 +626,7 @@ namespace TVRepository.Data
             return retorno;
         }
 
-        
+
 
         #endregion
 

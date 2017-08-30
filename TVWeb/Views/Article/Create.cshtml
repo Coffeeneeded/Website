@@ -44,23 +44,57 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" id="btnSave" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
-<pre class="prettyprint linenums">
-        public DbSet<Autor> Autores { get; set; }<br />
-        public DbSet<Imagem> Imagens { get; set; }<br />
-        public DbSet<RedeSocial> RedeSociais { get; set; }<br />
-        public DbSet<RedeSocialPessoa> RedeSocialPessoas { get; set; } 
-        string g = "sads";
-</pre>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
+
     <script src="~/js/bootstrap-tagsinput.js"></script>
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            console.log('passou');
+            $('#btnSave').click(function (e) {
+                console.log('passou1');
+                e.preventDefault(); // <------------------ stop default behaviour of button
+
+                console.log('passou2');
+                var requestData = {
+                    StartDate: "1/19/2016",
+                    EndDate: "4/19/2016",
+                    ProductType: "New",
+                    Count: 1
+                };
+
+
+                var element = this;
+                $.ajax({
+                    url: "/api/Article/Create",
+                    type: "POST",
+                    data: JSON.stringify(requestData),
+                    dataType: "json",
+                    traditional: true,
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        if (data.status == "Success") {
+                            $(element).closest("form").submit(); //<------------ submit form
+                        } else {
+                            alert("Error occurs on the Database level!");
+                        }
+                    },
+                    error: function () {
+                        alert("An error has occured!!!");
+                    }
+                });
+            });
+        });
+    </script>
 }

@@ -17,6 +17,7 @@ using TVService.Contracts;
 using TVRepository;
 using TVCommon.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ThiagoVivas
 {
@@ -45,7 +46,10 @@ namespace ThiagoVivas
             //    .AddDefaultTokenProviders();
 
             // Add framework services.
-            var mvcBuilder = services.AddMvc();
+            var mvcBuilder = services.AddMvc(options =>
+            {
+                options.Filters.Add(new ProducesAttribute("application/json"));
+            });
 
 
             //configure identity
@@ -100,7 +104,8 @@ namespace ThiagoVivas
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            // app.UseCors(builder =>
+            //builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
             app.UseStaticFiles();
             //app.UseIdentity();
 
@@ -109,6 +114,15 @@ namespace ThiagoVivas
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "Article2",
+                    template: "Api/Article/{Year:int}",
+                    defaults: new { Controller = "Article", Action = "GetByYear" });
+
+                routes.MapRoute(
+                    name: "Article",
+                    template: "Api/Article/{Tittle:alpha?}",
+                    defaults: new { Controller = "Article", Action = "GetArticle" });
 
                 //routes.MapSpaFallbackRoute(
                 //    name: "spa-fallback",

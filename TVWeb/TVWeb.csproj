@@ -30,7 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\css\bootstrap-tagsinput.css" />
-    <Content Include="wwwroot\css\tags.css" />
     <Content Include="wwwroot\js\bootstrap-tagsinput.js" />
   </ItemGroup>
   <ItemGroup>

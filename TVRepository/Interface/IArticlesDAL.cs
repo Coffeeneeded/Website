@@ -10,7 +10,7 @@ namespace TVRepository.Interface
 
         List<Artigo> GetArtigos();
         Artigo GetArtigo(string titulo);
-        Artigo GetArtigo(int id);
+        Artigo GetArtigo(long id);
         List<Artigo> GetArtigos(int year);
         List<Artigo> GetArtigos(int year, int mes);
         List<Artigo> GetArtigosBuscaTexto(string busca);
@@ -18,8 +18,10 @@ namespace TVRepository.Interface
         List<Artigo> GetArtigosBuscaTituloETexto(string busca);
         long CreateArtigo(Artigo obj);
         List<ArtigoTag> GetArtigoTag();
-        List<ArtigoTag> GetArtigoTagPorArtigo(int idArtigo);
-        List<ArtigoTag> GetArtigoTagPorTag(int idTag);
+        List<ArtigoTag> GetArtigoTagPorArtigo(long idArtigo);
+        List<ArtigoTag> GetArtigoTagPorTag(long idTag);
+        List<ArtigoTag> GetArtigoTagPorTag(string tag);
+        List<Artigo> GetArtigoPorArtigoTagId(List<long> lstArtigoTagId);
         long[] CreateArtigoTag(List<ArtigoTag> objs);
         long CreateArtigoTag(ArtigoTag obj);
         List<Autor> GetAutores();
@@ -34,7 +36,8 @@ namespace TVRepository.Interface
         List<RedeSocialPessoa> GetRedeSociaisPessoa(long idPessoa);
         long[] CreateRedeSociaisPessooa(List<RedeSocialPessoa> objs);
         List<Tag> GetTags();
-        List<Tag> GetTags(string nomeTag);
+        Tag GetTag(string nomeTag);
+        Tag GetTag(long idTag);
         long[] CreateTags(List<Tag> objs);
 
     }

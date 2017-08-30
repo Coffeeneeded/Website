@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: ActiveBorder;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -41,3 +42,60 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+
+
+
+.art-article {
+    position: relative;
+    max-width: inherit;
+    border-bottom: #EBF2F6 1px solid;
+    word-wrap: break-word;
+    height: auto;
+    border-style: dashed;
+    border-color: red;
+}
+
+.art-article-intern {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.art-header {
+    display: block;
+}
+
+
+.art-header-tittle {
+    font-family: "Bookman-header";
+}
+
+
+.art-header-dois {
+    overflow: hidden;
+}
+
+
+
+.art-header-subtittle {
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #9EABB3;
+    width: 60%;
+    float: left;
+}
+
+.art-header-share {
+    font-size: 14px;
+    width: 35%;
+    float: left;
+    border-style: dashed;
+    border-color: aliceblue;
+}
+
+.art-body {
+    border-style: dashed;
+    border-color: gold;
+    display: block;
+    font-family: "Maiandra GD";
+}

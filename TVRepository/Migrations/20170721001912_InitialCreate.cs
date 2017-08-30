@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TVRepository.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,17 +27,19 @@ namespace TVRepository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Autores",
+                name: "Imagens",
                 columns: table => new
                 {
-                    IdAutor = table.Column<long>(nullable: false)
+                    IdImagem = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Biografia = table.Column<string>(nullable: true),
-                    Nome = table.Column<string>(nullable: true)
+                    Caminho = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: true),
+                    PosicaoEsq = table.Column<int>(nullable: false),
+                    PosicaoTop = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Autores", x => x.IdAutor);
+                    table.PrimaryKey("PK_Imagens", x => x.IdImagem);
                 });
 
             migrationBuilder.CreateTable(
@@ -54,67 +56,23 @@ namespace TVRepository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Imagens",
+                name: "Autores",
                 columns: table => new
                 {
+                    IdAutor = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Biografia = table.Column<string>(nullable: true),
                     IdImagem = table.Column<long>(nullable: false),
-                    Caminho = table.Column<string>(nullable: true),
-                    IdArtigo = table.Column<long>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
-                    PosicaoEsq = table.Column<int>(nullable: false),
-                    PosicaoTop = table.Column<int>(nullable: false)
+                    Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Imagens", x => x.IdImagem);
+                    table.PrimaryKey("PK_Autores", x => x.IdAutor);
                     table.ForeignKey(
-                        name: "FK_Imagens_Artigos_IdArtigo",
-                        column: x => x.IdArtigo,
-                        principalTable: "Artigos",
-                        principalColumn: "IdArtigo",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Imagens_Artigos_IdImagem",
+                        name: "FK_Autores_Imagens_IdImagem",
                         column: x => x.IdImagem,
-                        principalTable: "Artigos",
-                        principalColumn: "IdArtigo",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ArtigoTags",
-                columns: table => new
-                {
-                    IdArtigoTag = table.Column<long>(nullable: false),
-                    IdArtigo = table.Column<long>(nullable: false),
-                    IdTag = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArtigoTags", x => x.IdArtigoTag);
-                    table.ForeignKey(
-                        name: "FK_ArtigoTags_Artigos_IdArtigo",
-                        column: x => x.IdArtigo,
-                        principalTable: "Artigos",
-                        principalColumn: "IdArtigo",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArtigoTags_Artigos_IdArtigoTag",
-                        column: x => x.IdArtigoTag,
-                        principalTable: "Artigos",
-                        principalColumn: "IdArtigo",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArtigoTags_Tags_IdArtigoTag",
-                        column: x => x.IdArtigoTag,
-                        principalTable: "Tags",
-                        principalColumn: "IdTag",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArtigoTags_Tags_IdTag",
-                        column: x => x.IdTag,
-                        principalTable: "Tags",
-                        principalColumn: "IdTag",
+                        principalTable: "Imagens",
+                        principalColumn: "IdImagem",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -136,6 +94,26 @@ namespace TVRepository.Migrations
                         principalTable: "Imagens",
                         principalColumn: "IdImagem",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ArtigoTags",
+                columns: table => new
+                {
+                    IdArtigoTag = table.Column<long>(nullable: false),
+                    IdArtigo = table.Column<long>(nullable: false),
+                    IdTag = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArtigoTags", x => x.IdArtigoTag);
+                    table.ForeignKey(
+                        name: "FK_ArtigoTags_Artigos_IdArtigo",
+                        column: x => x.IdArtigo,
+                        principalTable: "Artigos",
+                        principalColumn: "IdArtigo",
+                        onDelete: ReferentialAction.Restrict);
+
                 });
 
             migrationBuilder.CreateTable(
@@ -176,9 +154,9 @@ namespace TVRepository.Migrations
                 column: "IdTag");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Imagens_IdArtigo",
-                table: "Imagens",
-                column: "IdArtigo");
+                name: "IX_Autores_IdImagem",
+                table: "Autores",
+                column: "IdImagem");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RedeSociais_IdImagem",
@@ -205,6 +183,9 @@ namespace TVRepository.Migrations
                 name: "RedeSocialPessoas");
 
             migrationBuilder.DropTable(
+                name: "Artigos");
+
+            migrationBuilder.DropTable(
                 name: "Tags");
 
             migrationBuilder.DropTable(
@@ -215,9 +196,6 @@ namespace TVRepository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Imagens");
-
-            migrationBuilder.DropTable(
-                name: "Artigos");
         }
     }
 }

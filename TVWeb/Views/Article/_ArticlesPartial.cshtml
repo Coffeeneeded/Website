@@ -1,0 +1,47 @@
+@using System.Linq;
+@model IEnumerable<TVCommon.ViewModels.CreateArtigoViewMmodel>
+@{
+
+    ViewData["Title"] = "Get";
+}
+<link href="~/css/bootstrap-tagsinput.css" rel="stylesheet" />
+@foreach (var item in Model)
+{
+    List<string> lstTag = new List<string>();
+    lstTag = item.Tags.Split(' ').ToList();
+
+    <article class="art-article">
+        <section class="art-article-intern">
+            <header class="art-header">
+                <section class="art-header-tittle"><h1>@item.Artigo.Titulo</h1> </section>
+                <section class="art-header-dois">
+                    <section class="art-header-subtittle">
+                        @item.Artigo.DataPublicacao <br />
+                        @foreach (string s in lstTag)
+                        {
+                            <a asp-controller="Article"
+                               asp-action="GetTag"
+                               asp-route-tag="@s">
+                                @s
+                            </a>
+                        }
+                    </section>
+                    <section class="art-header-share">teste hearder-share</section>
+                </section>
+            </header>
+            <section class="art-body">
+                @item.Artigo.Texto.ToString().Substring(0, 1050)
+
+
+
+            </section>
+            <a asp-controller="Article"
+               asp-action="GetArticle"
+               asp-route-Tittle="@item.Artigo.Titulo.Replace(' ', '-')">
+                Read More..
+            </a>
+        </section>
+    </article>
+}
+
+

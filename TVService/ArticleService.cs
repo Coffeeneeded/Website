@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TVCommon.Models;
 using TVCommon.ViewModels;
@@ -29,7 +30,7 @@ namespace TVService
                     ArtigoTag objArtigoTag;
                     Tag objTag;
 
-                    
+
 
                     foreach (var item in obj.Tags.Split())
                     {
@@ -38,7 +39,7 @@ namespace TVService
                         objTag.Nome = item;
                         lstTag.Add(objTag);
                     }
-                    
+
                     long[] tagsId = this.CreateTags(lstTag);
 
 
@@ -104,44 +105,92 @@ namespace TVService
             return "teste";
         }
 
-        public Artigo GetArtigo(string titulo)
+        public CreateArtigoViewMmodel GetArtigo(string titulo)
         {
-            return dependency.GetArtigo(titulo);
+            CreateArtigoViewMmodel retorno = new CreateArtigoViewMmodel();
+            List<Tag> lstTag = new List<Tag>();
+
+            retorno.Artigo = dependency.GetArtigo(titulo);
+            List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
+
+            lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
+            lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
+
+            return retorno;
         }
 
-        public Artigo GetArtigo(int id)
+        public CreateArtigoViewMmodel GetArtigo(long id)
         {
-            return dependency.GetArtigo(id);
+            CreateArtigoViewMmodel retorno = new CreateArtigoViewMmodel();
+            List<Tag> lstTag = new List<Tag>();
+
+            retorno.Tags = string.Empty;
+            retorno.Artigo = dependency.GetArtigo(id);
+            List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
+
+            lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
+            lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
+
+            return retorno;
         }
 
-        public List<Artigo> GetArtigos()
+        public List<CreateArtigoViewMmodel> GetArtigos()
         {
-            return dependency.GetArtigos();
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+            List<long> lstArtigoId = new List<long>();
+
+            lstArtigoId = dependency.GetArtigos().Select(x => x.IdArtigo).ToList();
+            lstArtigoId.ForEach(x => retorno.Add(this.GetArtigo(x)));
+
+
+            return retorno;
         }
 
-        public List<Artigo> GetArtigos(int year)
+        public List<CreateArtigoViewMmodel> GetArtigos(int year)
         {
-            return dependency.GetArtigos(year);
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+
+            return retorno;
         }
 
-        public List<Artigo> GetArtigos(int year, int mes)
+        public List<CreateArtigoViewMmodel> GetArtigos(int year, int mes)
         {
-            return dependency.GetArtigos(year, mes);
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+
+            return retorno;
         }
 
-        public List<Artigo> GetArtigosBuscaTexto(string busca)
+        public List<CreateArtigoViewMmodel> GetArtigosBuscaTexto(string busca)
         {
-            return dependency.GetArtigosBuscaTexto(busca);
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+
+            return retorno;
         }
 
-        public List<Artigo> GetArtigosBuscaTitulo(string busca)
+        public List<CreateArtigoViewMmodel> GetArtigosBuscaTitulo(string busca)
         {
-            return dependency.GetArtigosBuscaTitulo(busca);
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+
+            return retorno;
         }
 
-        public List<Artigo> GetArtigosBuscaTituloETexto(string busca)
+        public List<CreateArtigoViewMmodel> GetArtigosBuscaTituloETexto(string busca)
         {
-            return dependency.GetArtigosBuscaTituloETexto(busca);
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+
+            return retorno;
+        }
+
+        public List<CreateArtigoViewMmodel> GetArtigoPorTag(string tag)
+        {
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+
+            var tagId = this.dependency.GetTag(tag).IdTag;
+            var lstArtigoTag = this.dependency.GetArtigoTagPorTag(tagId).Select(x => x.IdArtigoTag).ToList();
+            List<long> idArtigos = this.dependency.GetArtigoPorArtigoTagId(lstArtigoTag).Select(x => x.IdArtigo).ToList();
+
+            idArtigos.ForEach(x => retorno.Add(this.GetArtigo(x)));
+            return retorno;
         }
 
         public List<ArtigoTag> GetArtigoTag()
@@ -149,12 +198,12 @@ namespace TVService
             return dependency.GetArtigoTag();
         }
 
-        public List<ArtigoTag> GetArtigoTagPorArtigo(int idArtigo)
+        public List<ArtigoTag> GetArtigoTagPorArtigo(long idArtigo)
         {
             return dependency.GetArtigoTagPorArtigo(idArtigo);
         }
 
-        public List<ArtigoTag> GetArtigoTagPorTag(int idTag)
+        public List<ArtigoTag> GetArtigoTagPorTag(long idTag)
         {
             return dependency.GetArtigoTagPorTag(idTag);
         }
@@ -178,7 +227,7 @@ namespace TVService
         {
             return dependency.GetImagens(idImagem);
         }
-        
+
 
         public List<RedeSocial> GetRedeSociais()
         {
@@ -200,9 +249,5 @@ namespace TVService
             return dependency.GetTags();
         }
 
-        public List<Tag> GetTags(string nomeTag)
-        {
-            return dependency.GetTags(nomeTag);
-        }
     }
 }

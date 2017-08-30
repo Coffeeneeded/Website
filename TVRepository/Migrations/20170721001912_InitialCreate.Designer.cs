@@ -8,8 +8,8 @@ using TVRepository;
 namespace TVRepository.Migrations
 {
     [DbContext(typeof(ArticlesContext))]
-    [Migration("20170708030239_initial")]
-    partial class initial
+    [Migration("20170721001912_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,20 +61,23 @@ namespace TVRepository.Migrations
 
                     b.Property<string>("Biografia");
 
+                    b.Property<long>("IdImagem");
+
                     b.Property<string>("Nome");
 
                     b.HasKey("IdAutor");
+
+                    b.HasIndex("IdImagem");
 
                     b.ToTable("Autores");
                 });
 
             modelBuilder.Entity("TVCommon.Models.Imagem", b =>
                 {
-                    b.Property<long>("IdImagem");
+                    b.Property<long>("IdImagem")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Caminho");
-
-                    b.Property<long>("IdArtigo");
 
                     b.Property<string>("Nome");
 
@@ -83,8 +86,6 @@ namespace TVRepository.Migrations
                     b.Property<int>("PosicaoTop");
 
                     b.HasKey("IdImagem");
-
-                    b.HasIndex("IdArtigo");
 
                     b.ToTable("Imagens");
                 });
@@ -156,14 +157,10 @@ namespace TVRepository.Migrations
                         .HasForeignKey("IdTag");
                 });
 
-            modelBuilder.Entity("TVCommon.Models.Imagem", b =>
+            modelBuilder.Entity("TVCommon.Models.Autor", b =>
                 {
-                    b.HasOne("TVCommon.Models.Artigo", "Artigo")
+                    b.HasOne("TVCommon.Models.Imagem", "Imagem")
                         .WithMany()
-                        .HasForeignKey("IdArtigo");
-
-                    b.HasOne("TVCommon.Models.Artigo")
-                        .WithMany("Imagens")
                         .HasForeignKey("IdImagem");
                 });
 

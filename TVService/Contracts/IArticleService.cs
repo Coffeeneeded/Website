@@ -9,18 +9,19 @@ namespace TVService.Contracts
     public interface IArticleService
     {
         string Get();
-        List<Artigo> GetArtigos();
-        Artigo GetArtigo(string titulo);
-        Artigo GetArtigo(int id);
-        List<Artigo> GetArtigos(int year);
-        List<Artigo> GetArtigos(int year, int mes);
-        List<Artigo> GetArtigosBuscaTexto(string busca);
-        List<Artigo> GetArtigosBuscaTitulo(string busca);
-        List<Artigo> GetArtigosBuscaTituloETexto(string busca);
+        List<CreateArtigoViewMmodel> GetArtigoPorTag(string tag);
+        List<CreateArtigoViewMmodel> GetArtigos();
+        CreateArtigoViewMmodel GetArtigo(string titulo);
+        CreateArtigoViewMmodel GetArtigo(long id);
+        List<CreateArtigoViewMmodel> GetArtigos(int year);
+        List<CreateArtigoViewMmodel> GetArtigos(int year, int mes);
+        List<CreateArtigoViewMmodel> GetArtigosBuscaTexto(string busca);
+        List<CreateArtigoViewMmodel> GetArtigosBuscaTitulo(string busca);
+        List<CreateArtigoViewMmodel> GetArtigosBuscaTituloETexto(string busca);
         long CreateArtigo(CreateArtigoViewMmodel obj);
         List<ArtigoTag> GetArtigoTag();
-        List<ArtigoTag> GetArtigoTagPorArtigo(int idArtigo);
-        List<ArtigoTag> GetArtigoTagPorTag(int idTag);
+        List<ArtigoTag> GetArtigoTagPorArtigo(long idArtigo);
+        List<ArtigoTag> GetArtigoTagPorTag(long idTag);
         long[] CreateArtigoTag(List<ArtigoTag> objs);
         long CreateArtigoTag(ArtigoTag obj);
         List<Autor> GetAutores();
@@ -35,7 +36,6 @@ namespace TVService.Contracts
         List<RedeSocialPessoa> GetRedeSociaisPessoa(long idPessoa);
         long[] CreateRedeSociaisPessooa(List<RedeSocialPessoa> objs);
         List<Tag> GetTags();
-        List<Tag> GetTags(string nomeTag);
         long[] CreateTags(List<Tag> objs);
     }
 }
