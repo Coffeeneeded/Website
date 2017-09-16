@@ -11,7 +11,7 @@ namespace TVRepository
         public ArticlesContext Create(DbContextFactoryOptions options)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ArticlesContext>();
-            optionsBuilder.UseSqlServer("data source=THIAGONOTE-PC\\SQLEXPRESS;initial catalog=WebBlog;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+            optionsBuilder.UseSqlServer("Data Source=tcp:s15.winhost.com;Initial Catalog=DB_116930_blog;User ID=DB_116930_blog_user;Password=@lfa4463;Integrated Security=False;");
 
             return new ArticlesContext(optionsBuilder.Options);
         }         

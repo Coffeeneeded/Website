@@ -17,7 +17,7 @@ namespace ThiagoVivas.Controllers
         }
         public IActionResult Index()
         {
-                        return View();
+            return View(this._service.GetArtigos().OrderByDescending(x => x.Artigo.DataPublicacao));
         }
 
         public IActionResult Error()

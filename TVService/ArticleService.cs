@@ -111,11 +111,13 @@ namespace TVService
             List<Tag> lstTag = new List<Tag>();
 
             retorno.Artigo = dependency.GetArtigo(titulo);
-            List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
+            if (retorno.Artigo != null)
+            {
+                List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
 
-            lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
-            lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
-
+                lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
+                lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
+            }
             return retorno;
         }
 
@@ -149,6 +151,10 @@ namespace TVService
         public List<CreateArtigoViewMmodel> GetArtigos(int year)
         {
             List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+            List<long> lstArtigoId = new List<long>();
+
+            lstArtigoId = dependency.GetArtigos(year).Select(x => x.IdArtigo).ToList();
+            lstArtigoId.ForEach(x => retorno.Add(this.GetArtigo(x)));
 
             return retorno;
         }
@@ -156,6 +162,10 @@ namespace TVService
         public List<CreateArtigoViewMmodel> GetArtigos(int year, int mes)
         {
             List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+            List<long> lstArtigoId = new List<long>();
+
+            lstArtigoId = dependency.GetArtigos(year, mes).Select(x => x.IdArtigo).ToList();
+            lstArtigoId.ForEach(x => retorno.Add(this.GetArtigo(x)));
 
             return retorno;
         }

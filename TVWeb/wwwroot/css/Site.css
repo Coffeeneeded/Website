@@ -6,8 +6,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -51,12 +51,10 @@ input[type="checkbox"].input-validation-error {
     border-bottom: #EBF2F6 1px solid;
     word-wrap: break-word;
     height: auto;
-    border-style: dashed;
-    border-color: red;
+    background-color: #fbfbf7;
 }
 
 .art-article-intern {
-    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -89,13 +87,19 @@ input[type="checkbox"].input-validation-error {
     font-size: 14px;
     width: 35%;
     float: left;
-    border-style: dashed;
-    border-color: aliceblue;
 }
 
 .art-body {
-    border-style: dashed;
-    border-color: gold;
+    background-color: #efefe6;
     display: block;
     font-family: "Maiandra GD";
+}
+
+.main-images {
+    max-height: 250px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 10px;
 }

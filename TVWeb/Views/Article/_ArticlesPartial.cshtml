@@ -13,7 +13,13 @@
     <article class="art-article">
         <section class="art-article-intern">
             <header class="art-header">
-                <section class="art-header-tittle"><h1>@item.Artigo.Titulo</h1> </section>
+                <section class="art-header-tittle">
+                    <h1>
+                        <a style="all: unset" asp-controller="Article"
+                           asp-action="GetArticle"
+                           asp-route-Tittle="@item.Artigo.Titulo.Replace(' ', '-')">@item.Artigo.Titulo</a>
+                    </h1>
+                </section>
                 <section class="art-header-dois">
                     <section class="art-header-subtittle">
                         @item.Artigo.DataPublicacao <br />

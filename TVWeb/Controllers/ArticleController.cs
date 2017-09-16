@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -27,9 +28,6 @@ namespace TVWeb.Controllers
         {
             return View(this._service.GetArtigos().OrderByDescending(x => x.Artigo.DataPublicacao));
 
-            //IEnumerable<Artigo> retorno = this._service.GetArtigos();
-
-            //return retorno;
         }
 
         [HttpPost]
@@ -42,29 +40,30 @@ namespace TVWeb.Controllers
 
         [HttpPost]
         public IActionResult Post(CreateArtigoViewMmodel obj)
-        //public IActionResult Post([FromBody] CreateArtigoViewMmodel obj)
         {
             var x = _service.CreateArtigo(obj);
             return CreatedAtRoute("GetArticle", new { Tittle = obj.Artigo.Titulo });
         }
-        //[HttpGet("{month}/{year}")]
-        //public IEnumerable<Artigo> Get(int month, int year)
-        //{
-        //    IEnumerable<Artigo> retorno = this._service.GetArtigos(year, month);
+        [HttpGet("/api/Article/{year}/{month}")]
+        public IActionResult Get(int year, int month)
+        {
+            var retorno = this._service.GetArtigos(year, month);
 
-        //    return retorno;
-        //}
-        [HttpGet("/{Year}")]
+            return View("Get", retorno);
+        }
+        [HttpGet("/api/Article/{year:int}")]
         public IActionResult GetByYear(int Year)
         {
-            IEnumerable<CreateArtigoViewMmodel> retorno = this._service.GetArtigos(Year);
+            var retorno = this._service.GetArtigos(Year);
 
-            return View(retorno);
+            return View("Get", retorno);
         }
-        [HttpGet("/{Tittle}")]
+        [HttpGet("/api/Article/{Tittle}")]
         public IActionResult GetArticle(string Tittle)
         {
-            //if(Tittle.try)
+            int ano = 0;
+            if (int.TryParse(Tittle, out ano))
+                return RedirectToAction("GetByYear", new { Year = ano });
 
             CreateArtigoViewMmodel retorno = this._service.GetArtigo(Tittle.Replace('-', ' '));
 
