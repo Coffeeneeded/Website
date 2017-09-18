@@ -1,0 +1,105 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: ActiveBorder;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+
+
+.art-article {
+    position: relative;
+    max-width: inherit;
+    border-bottom: #EBF2F6 1px solid;
+    word-wrap: break-word;
+    height: auto;
+    background-color: #fbfbf7;
+}
+
+.art-article-intern {
+    margin-bottom: 2rem;
+}
+
+.art-header {
+    display: block;
+}
+
+
+.art-header-tittle {
+    font-family: "Bookman-header";
+}
+
+
+.art-header-dois {
+    overflow: hidden;
+}
+
+
+
+.art-header-subtittle {
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #9EABB3;
+    width: 60%;
+    float: left;
+}
+
+.art-header-share {
+    font-size: 14px;
+    width: 35%;
+    float: left;
+}
+
+.art-body {
+    background-color: #efefe6;
+    display: block;
+    font-family: "Maiandra GD";
+}
+
+.main-images {
+    max-height: 250px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 10px;
+}
