@@ -22,7 +22,7 @@
                 </section>
                 <section class="art-header-dois">
                     <section class="art-header-subtittle">
-                        @item.Artigo.DataPublicacao <br />
+                        @item.Artigo.DataPublicacao.ToString("d") <br />
                         @foreach (string s in lstTag)
                         {
                             <a asp-controller="Article"
@@ -32,13 +32,11 @@
                             </a>
                         }
                     </section>
-                    <section class="art-header-share">teste hearder-share</section>
+                    <section class="art-header-share"></section>
                 </section>
             </header>
             <section class="art-body">
                 @item.Artigo.Texto.ToString().Substring(0, 150)
-
-
 
             </section>
             <a asp-controller="Article"

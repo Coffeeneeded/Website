@@ -103,3 +103,8 @@ input[type="checkbox"].input-validation-error {
     display: block;
     padding: 10px;
 }
+
+.highlight {
+    font-weight: bold;
+    background-color: yellow;
+}

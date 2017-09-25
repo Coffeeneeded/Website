@@ -19,7 +19,7 @@
             <section class="art-header-tittle"><h1>@Model.Artigo.Titulo</h1> </section>
             <section class="art-header-dois">
                 <section class="art-header-subtittle">
-                    @Model.Artigo.DataPublicacao <br />
+                    @Model.Artigo.DataPublicacao.ToString("d")<br />
                     @foreach (string s in lstTag)
                     {
                         <a asp-controller="Article"
@@ -29,7 +29,7 @@
                         </a>
                     }
                 </section>
-                <section class="art-header-share">teste hearder-share</section>
+                <section class="art-header-share"></section>
             </section>
         </header>
         <section class="art-body">
@@ -42,9 +42,8 @@
 @section Scripts{
 
     <script src="~/js/bootstrap-tagsinput.js"></script>
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sons-of-obsidian"></script>
-
-    <script type="text/javascript">
+<script src="~/js/prettify.js"></script>
+    @*<script type="text/javascript">
 
         $(document).ready(function () {
             $('.art-body').each(function () {
@@ -52,5 +51,5 @@
                 var zcontent = content.replace('terminaaqui', '</pre>');
                 $(this).html(zcontent);
             })
-        }); </script>
+        }); </script>*@
 }

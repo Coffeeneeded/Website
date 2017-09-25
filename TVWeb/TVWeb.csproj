@@ -28,10 +28,6 @@
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
   </ItemGroup>
   <ItemGroup>
-    <Content Include="wwwroot\css\bootstrap-tagsinput.css" />
-    <Content Include="wwwroot\js\bootstrap-tagsinput.js" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\TVService\TVService.csproj" />
   </ItemGroup>
 <ItemGroup>
