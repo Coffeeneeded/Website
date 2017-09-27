@@ -1,25 +1,24 @@
 @model IEnumerable<TVCommon.ViewModels.CreateArtigoViewMmodel>
-    @{
-        ViewData["Title"] = "GetTag";
-        Layout = "~/Views/Shared/Layout.cshtml";
-    }
+@{
+    ViewData["Title"] = "GetTag";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
 <link href="~/css/bootstrap-tagsinput.css" rel="stylesheet" />
-    <h2>GetTag</h2>
+<h2>GetTag</h2>
 
-    @Html.Partial("_ArticlesPartial", Model)
+@Html.Partial("_ArticlesPartial", Model)
 
 @section Scripts{
 
     <script src="~/js/bootstrap-tagsinput.js"></script>
     <script src="~/js/prettify.js"></script>
 
-    @*<script type="text/javascript">
+    <script type="text/javascript">
 
         $(document).ready(function () {
-            $('.art-body').each(function () {
-                                var content = $(this).text().replace('comecaaqui', '<pre class="prettyprint linenums">');
-                var zcontent = content.replace('terminaaqui', '</pre>');
-                $(this).html(zcontent);
-            })
-        }); </script>*@
+            $('.art-body').each(function() {
+                var content = $(this).text();
+                $(this).html(content);
+            });
+        }); </script>
 }

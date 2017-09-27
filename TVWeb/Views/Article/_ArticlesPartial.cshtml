@@ -36,7 +36,7 @@
                 </section>
             </header>
             <section class="art-body">
-                @item.Artigo.Texto.ToString().Substring(0, 150)
+                @Html.Raw(item.Artigo.Texto.Substring(0, 150))
 
             </section>
             <a asp-controller="Article"
