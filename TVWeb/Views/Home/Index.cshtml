@@ -3,7 +3,7 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-<link href="~/css/bootstrap-tagsinput.css" rel="stylesheet" />
+<link href="~/css/bootstrap-tagsinput.min.css" rel="stylesheet" />
 <div><img class="main-images" src="Imagens/programmer.jpg" /></div>
 
 
@@ -13,16 +13,5 @@
 
 @section Scripts{
 
-    <script src="~/js/bootstrap-tagsinput.js"></script>
-    @*<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sons-of-obsidian"></script>*@
-<script src="~/js/prettify.js"></script>
-    @*    <script type="text/javascript">
-
-$(document).ready(function () {
-            $('.art-body').each(function () {
-                var content = $(this).text().replace('comecaaqui', '<pre class="prettyprint linenums">');
-                var zcontent = content.replace('terminaaqui', '</pre>');
-                $(this).html(zcontent);
-            })
-        }); </script>*@
+    <script src="~/js/bootstrap-tagsinput.min.js"></script>
 }
