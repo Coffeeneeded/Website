@@ -17,10 +17,9 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/bootstrap-tagsinput.min.js",
+    "outputFileName": "wwwroot/js/prettify.min.js",
     // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
-      "wwwroot/js/bootstrap-tagsinput.js",
       "wwwroot/js/prettify.js"
     ]
   },

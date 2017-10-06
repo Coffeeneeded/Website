@@ -113,20 +113,7 @@ namespace ThiagoVivas
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "Article2",
-                    template: "Api/Article/{Year:int}",
-                    defaults: new { Controller = "Article", Action = "GetByYear" });
-
-                routes.MapRoute(
-                    name: "Article",
-                    template: "Api/Article/{Tittle:alpha?}",
-                    defaults: new { Controller = "Article", Action = "GetArticle" });
-
-                //routes.MapSpaFallbackRoute(
-                //    name: "spa-fallback",
-                //    defaults: new { controller = "Home", action = "Index" });
+                    template: "{controller=Home}/{action=Index}/{id?}");              
             });
         }
     }
