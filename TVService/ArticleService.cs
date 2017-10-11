@@ -128,12 +128,12 @@ namespace TVService
             List<Tag> lstTag = new List<Tag>();
             
 
-            retorno.Tags = string.Empty;
+            retorno.Tags = "A B C";
             retorno.Artigo = dependency.GetArtigo(id);
-            List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
+            //List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
 
-            lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
-            lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
+            //lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
+            //lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
 
             return retorno;
         }
@@ -160,33 +160,26 @@ namespace TVService
         public List<CreateArtigoViewMmodel> GetArtigosNovo(int maxArtigos = 5)
         {
             List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
-            List<long> lstArtigoId = this.dependency.GetArtigosId();
+            List<long> lstArtigoId = this.dependency.GetArtigosId(maxArtigos);
             lstArtigoId.ForEach(x => retorno.Add(this.GetArtigoNovo(x)));
 
             return retorno;
         }
 
-        public List<CreateArtigoViewMmodel> GetArtigos()
+        public List<CreateArtigoViewMmodel> GetArtigos(int maxArtigos = 5)
         {
             List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
             
-            List<long> lstArtigoId = this.dependency.GetArtigosId();
+            List<long> lstArtigoId = this.dependency.GetArtigosId(maxArtigos);
 
-
-
-            //Parallel.ForEach(lstArtigoId, artigoId =>
-            //{
-            //    retorno.Add(this.GetArtigo(artigoId));
-
-            //});
-
+                        
             lstArtigoId.ForEach(x => retorno.Add(this.GetArtigo(x)));
 
 
             return retorno;
         }
 
-        public List<CreateArtigoViewMmodel> GetArtigos(int year)
+        public List<CreateArtigoViewMmodel> GetArtigosByYear(int year)
         {
             List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
             List<long> lstArtigoId = new List<long>();

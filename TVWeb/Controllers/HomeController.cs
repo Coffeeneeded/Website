@@ -14,25 +14,14 @@ namespace ThiagoVivas.Controllers
     public class HomeController : Controller
     {
         public readonly IArticleService _service;
-        private IDistributedCache _cache;
-        public HomeController(IArticleService service, IDistributedCache cache)
+        public HomeController(IArticleService service)
         {
             this._service = service;
-            this._cache = cache;
         }
         public IActionResult Index()
         {
-            //List<CreateArtigoViewMmodel> lstReturn = this._service.GetArtigos().OrderByDescending(x => x.Artigo.DataPublicacao).ToList();
-            List<CreateArtigoViewMmodel> lstReturn = JsonConvert.DeserializeObject<List<CreateArtigoViewMmodel>>(_cache.GetString("List_CreateArtigoViewMmodel") ?? "");
-            if (lstReturn == null)
-            {
-                lstReturn = this._service.GetArtigos().OrderByDescending(x => x.Artigo.DataPublicacao).ToList();
-
-                _cache.SetString("List_CreateArtigoViewMmodel", JsonConvert.SerializeObject(lstReturn, Formatting.None, new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                }));
-            }
+            List<CreateArtigoViewMmodel> lstReturn = this._service.GetArtigos().OrderByDescending(x => x.Artigo.DataPublicacao).ToList();
+         
             return View(lstReturn);
         }
 

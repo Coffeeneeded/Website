@@ -54,7 +54,7 @@ namespace TVWeb.Controllers
         [HttpGet("/api/Article/{year:int}")]
         public IActionResult GetByYear(int Year)
         {
-            var retorno = this._service.GetArtigos(Year);
+            var retorno = this._service.GetArtigosByYear(Year);
 
             return View("Get", retorno);
         }

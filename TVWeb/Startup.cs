@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -15,9 +14,6 @@ using TVRepository.Data;
 using TVService;
 using TVService.Contracts;
 using TVRepository;
-using TVCommon.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ThiagoVivas
 {
@@ -47,11 +43,6 @@ namespace ThiagoVivas
             //    .AddEntityFrameworkStores<ArticlesContext>()
             //    .AddDefaultTokenProviders();
 
-            // Add framework services.
-            var mvcBuilder = services.AddMvc(options =>
-            {
-                options.Filters.Add(new ProducesAttribute("application/json"));
-            });
 
 
             //configure identity
@@ -81,13 +72,8 @@ namespace ThiagoVivas
 
             services.AddTransient<IArticleService, ArticleService>();
             services.AddScoped<IArticlesDAL, ArticlesDAL>();
-            services.AddDistributedRedisCache(options =>
-            {
-                options.Configuration = Configuration.GetConnectionString("RedisConnection");
-                options.InstanceName = "RedisMaster";
-            });
 
-            mvcBuilder.AddJsonOptions(opts => opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+            services.AddMvc();
         }
 
 
@@ -102,17 +88,11 @@ namespace ThiagoVivas
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                //{
-                //    HotModuleReplacement = true
-                //});
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            // app.UseCors(builder =>
-            //builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
             app.UseStaticFiles();
             //app.UseIdentity();
 

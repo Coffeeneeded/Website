@@ -10,10 +10,10 @@ namespace TVService.Contracts
     {
         string Get();
         List<CreateArtigoViewMmodel> GetArtigoPorTag(string tag);
-        List<CreateArtigoViewMmodel> GetArtigos();
+        List<CreateArtigoViewMmodel> GetArtigos(int maxArtigos = 5);
         CreateArtigoViewMmodel GetArtigo(string titulo);
         CreateArtigoViewMmodel GetArtigo(long id);
-        List<CreateArtigoViewMmodel> GetArtigos(int year);
+        List<CreateArtigoViewMmodel> GetArtigosByYear(int year);
         List<CreateArtigoViewMmodel> GetArtigos(int year, int mes);
         List<CreateArtigoViewMmodel> GetArtigosBuscaTexto(string busca);
         List<CreateArtigoViewMmodel> GetArtigosBuscaTitulo(string busca);
