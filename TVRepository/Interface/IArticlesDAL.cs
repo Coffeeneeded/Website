@@ -39,6 +39,7 @@ namespace TVRepository.Interface
         Tag GetTag(string nomeTag);
         Tag GetTag(long idTag);
         long[] CreateTags(List<Tag> objs);
+        List<long> GetArtigosId(int maxArticles = 5);
 
     }
 }

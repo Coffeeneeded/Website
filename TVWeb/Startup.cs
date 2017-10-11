@@ -39,7 +39,9 @@ namespace ThiagoVivas
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<ArticlesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+
+            services.AddDbContext<ArticlesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
 
             //services.AddIdentity<Autor, IdentityRole>()
             //    .AddEntityFrameworkStores<ArticlesContext>()
@@ -79,6 +81,11 @@ namespace ThiagoVivas
 
             services.AddTransient<IArticleService, ArticleService>();
             services.AddScoped<IArticlesDAL, ArticlesDAL>();
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("RedisConnection");
+                options.InstanceName = "RedisMaster";
+            });
 
             mvcBuilder.AddJsonOptions(opts => opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
@@ -113,7 +120,7 @@ namespace ThiagoVivas
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");              
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

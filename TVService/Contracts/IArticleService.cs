@@ -37,5 +37,8 @@ namespace TVService.Contracts
         long[] CreateRedeSociaisPessooa(List<RedeSocialPessoa> objs);
         List<Tag> GetTags();
         long[] CreateTags(List<Tag> objs);
+        CreateArtigoViewMmodel GetArtigoNovo(long id);
+        List<CreateArtigoViewMmodel> GetArtigosNovo(int maxArtigos = 5);
+        //string GetTagPorArtigoId(long artigoId);
     }
 }

@@ -9,7 +9,7 @@ namespace TVRepository.Data
 {
     public class ArticlesDAL : IArticlesDAL
     {
-        private readonly ArticlesContext _dependency;
+        private ArticlesContext _dependency;
         public ArticlesDAL(ArticlesContext dependecy)
         {
             this._dependency = dependecy;
@@ -27,6 +27,22 @@ namespace TVRepository.Data
             try
             {
                 retorno = this._dependency.Artigos.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return retorno;
+        }
+        public List<long> GetArtigosId(int maxArticles = 5)
+        {
+            List<long> retorno = new List<long>();
+
+            try
+            {
+                retorno = this._dependency.Artigos.OrderByDescending(x => x.IdArtigo).Select(x => x.IdArtigo).Take(maxArticles).ToList();
             }
             catch (Exception ex)
             {

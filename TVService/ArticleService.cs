@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using TVCommon.Models;
 using TVCommon.ViewModels;
 using TVRepository.Interface;
@@ -11,7 +12,7 @@ namespace TVService
 {
     public class ArticleService : IArticleService
     {
-        private readonly IArticlesDAL dependency;
+        private  IArticlesDAL dependency;
         public ArticleService(IArticlesDAL _dependency)
         {
             this.dependency = _dependency;
@@ -125,6 +126,7 @@ namespace TVService
         {
             CreateArtigoViewMmodel retorno = new CreateArtigoViewMmodel();
             List<Tag> lstTag = new List<Tag>();
+            
 
             retorno.Tags = string.Empty;
             retorno.Artigo = dependency.GetArtigo(id);
@@ -135,13 +137,49 @@ namespace TVService
 
             return retorno;
         }
+        //public string GetTagPorArtigoId(long artigoId)
+        //{
+        //    string retorno = string.Empty;
+        //    var tags = this.dependency.GetTag()
+        //}
+
+        public CreateArtigoViewMmodel GetArtigoNovo(long id)
+        {
+            CreateArtigoViewMmodel retorno = new CreateArtigoViewMmodel();
+            List<Tag> lstTag = new List<Tag>();
+
+            retorno.Tags = string.Empty;
+            retorno.Artigo = dependency.GetArtigo(id);
+            List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
+
+            lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
+            lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
+
+            return retorno;
+        }
+        public List<CreateArtigoViewMmodel> GetArtigosNovo(int maxArtigos = 5)
+        {
+            List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
+            List<long> lstArtigoId = this.dependency.GetArtigosId();
+            lstArtigoId.ForEach(x => retorno.Add(this.GetArtigoNovo(x)));
+
+            return retorno;
+        }
 
         public List<CreateArtigoViewMmodel> GetArtigos()
         {
             List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
-            List<long> lstArtigoId = new List<long>();
+            
+            List<long> lstArtigoId = this.dependency.GetArtigosId();
 
-            lstArtigoId = dependency.GetArtigos().Select(x => x.IdArtigo).ToList();
+
+
+            //Parallel.ForEach(lstArtigoId, artigoId =>
+            //{
+            //    retorno.Add(this.GetArtigo(artigoId));
+
+            //});
+
             lstArtigoId.ForEach(x => retorno.Add(this.GetArtigo(x)));
 
 
