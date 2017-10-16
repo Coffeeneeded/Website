@@ -132,6 +132,8 @@ namespace TVService
             retorno.Artigo = dependency.GetArtigo(id);
             //List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
 
+            
+
             //lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
             //lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
 
@@ -171,8 +173,12 @@ namespace TVService
             List<CreateArtigoViewMmodel> retorno = new List<CreateArtigoViewMmodel>();
             
             List<long> lstArtigoId = this.dependency.GetArtigosId(maxArtigos);
+            //Parallel.ForEach(lstArtigoId, artigoId =>
+            //{
+            //    retorno.Add(this.GetArtigo(artigoId));
 
-                        
+            //});
+
             lstArtigoId.ForEach(x => retorno.Add(this.GetArtigo(x)));
 
 

@@ -37,7 +37,7 @@ namespace ThiagoVivas
 
             
 
-            services.AddDbContext<ArticlesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
+            services.AddDbContext<ArticlesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
 
             //services.AddIdentity<Autor, IdentityRole>()
             //    .AddEntityFrameworkStores<ArticlesContext>()
