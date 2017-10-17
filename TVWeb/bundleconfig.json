@@ -24,11 +24,17 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/validations.min.js",
+    "outputFileName": "wwwroot/js/jquery.min.js",
+    // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
       "wwwroot/js/1.12.0jquery.min.js",
+      "wwwroot/js/3.3.6bootstrap.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/validations.min.js",
+    "inputFiles": [
       "wwwroot/js/1.16.0jquery.validate.min.js",
-      "wwwroot/js/3.3.6bootstrap.min.js",
       "wwwroot/js/3.2.6jquery.validate.unobtrusive.min.js"
     ],
     // Optionally specify minification options
