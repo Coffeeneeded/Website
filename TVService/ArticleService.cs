@@ -128,14 +128,15 @@ namespace TVService
             List<Tag> lstTag = new List<Tag>();
             
 
-            retorno.Tags = "A B C";
+            //retorno.Tags = "A B C";
             retorno.Artigo = dependency.GetArtigo(id);
-            //List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
+            List<long> lstIdTags = dependency.GetArtigoTagPorArtigo(retorno.Artigo.IdArtigo).Select(x => x.IdTag).ToList();
 
-            
 
-            //lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
-            //lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
+
+            lstIdTags.ForEach(x => lstTag.Add(dependency.GetTag(x)));
+            lstTag.ForEach(x => retorno.Tags += x.Nome + " ");
+            retorno.Tags = retorno.Tags.TrimEnd();
 
             return retorno;
         }

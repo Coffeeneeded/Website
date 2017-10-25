@@ -1,10 +1,8 @@
 @using System.Linq;
 @model IEnumerable<TVCommon.ViewModels.CreateArtigoViewMmodel>
 @{
-
     ViewData["Title"] = "Get";
 }
-<link href="~/css/bootstrap-tagsinput.min.css" rel="stylesheet" />
 @foreach (var item in Model)
 {
     List<string> lstTag = new List<string>();
@@ -36,16 +34,15 @@
                 </section>
             </header>
             <section class="art-body">
+                <section class="art-body-image"></section>
                 @Html.Raw(item.Artigo.Texto.Substring(0, 150))
 
             </section>
-            <a asp-controller="Article"
-               asp-action="GetArticle"
-               asp-route-Tittle="@item.Artigo.Titulo.Replace(' ', '-')">
-                Read More..
-            </a>
         </section>
+        <a asp-controller="Article"
+           asp-action="GetArticle"
+           asp-route-Tittle="@item.Artigo.Titulo.Replace(' ', '-')">
+            Read More..
+        </a>
     </article>
 }
-
-
