@@ -52,6 +52,8 @@ input[type="checkbox"].input-validation-error {
     word-wrap: break-word;
     height: auto;
     background-color: #fbfbf7;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .art-article-intern {
@@ -93,7 +95,7 @@ input[type="checkbox"].input-validation-error {
 
 .art-body {
     background-color: #efefe6;
-    display: block;
+    overflow: auto;
     font-family: "Maiandra GD";
 }
 

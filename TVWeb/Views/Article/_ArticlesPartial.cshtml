@@ -2,11 +2,13 @@
 @model IEnumerable<TVCommon.ViewModels.CreateArtigoViewMmodel>
 @{
     ViewData["Title"] = "Get";
+    string imageURL = "";
 }
 @foreach (var item in Model)
 {
     List<string> lstTag = new List<string>();
     lstTag = item.Tags.Split(' ').ToList();
+    imageURL = "/Imagens/article" + @item.Artigo.IdArtigo.ToString() + ".png";
 
     <article class="art-article">
         <section class="art-article-intern">
@@ -34,15 +36,21 @@
                 </section>
             </header>
             <section class="art-body">
-                <section class="art-body-image"></section>
-                @Html.Raw(item.Artigo.Texto.Substring(0, 150))
+                <section class="art-body-image">
+                    <img src="@imageURL" style="max-width:100%;max-height:100%;" />
+                    
+                </section>
+                @Html.Raw(item.Artigo.Texto.Substring(0, 550))
 
             </section>
+            <div style="position: absolute;">
+                <a asp-controller="Article"
+                   asp-action="GetArticle"
+                   asp-route-Tittle="@item.Artigo.Titulo.Replace(' ', '-')">
+                    Read More..
+                </a>
+            </div>
         </section>
-        <a asp-controller="Article"
-           asp-action="GetArticle"
-           asp-route-Tittle="@item.Artigo.Titulo.Replace(' ', '-')">
-            Read More..
-        </a>
     </article>
+
 }
