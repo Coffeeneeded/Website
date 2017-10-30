@@ -28,13 +28,10 @@
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
   </ItemGroup>
   <ItemGroup>
-    <Content Include="wwwroot\Imagens\action result.png" />
     <Content Include="wwwroot\Imagens\article2.png" />
     <Content Include="wwwroot\Imagens\article4.png" />
     <Content Include="wwwroot\Imagens\article5.png" />
-    <Content Include="wwwroot\Imagens\azure redis cache.png" />
     <Content Include="wwwroot\Imagens\article6.png" />
-    <Content Include="wwwroot\Imagens\exception.png" />
     <Content Include="wwwroot\Imagens\article3.png" />
     <Content Include="wwwroot\js\ImageGenerator.js" />
   </ItemGroup>
