@@ -28,6 +28,9 @@
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
   </ItemGroup>
   <ItemGroup>
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="wwwroot\Imagens\article2.png" />
     <Content Include="wwwroot\Imagens\article4.png" />
     <Content Include="wwwroot\Imagens\article5.png" />

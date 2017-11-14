@@ -71,10 +71,8 @@ namespace TVWeb.Controllers
         }
         [Produces("application/json")]
         [HttpPost("Create"), Consumes("application/json")]
-        //public IActionResult Create([FromBody] CreateArtigoViewMmodel obj)
         public IActionResult Create([FromBody] CreateArtigoViewMmodel obj)
         {
-            //texto do artigo tem q vir em formato html
             var x = _service.CreateArtigo(obj);
             return CreatedAtRoute("GetArticle", new { tittle = obj.Artigo.Titulo });
         }

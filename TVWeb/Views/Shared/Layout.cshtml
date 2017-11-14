@@ -22,7 +22,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" ><span class="glyphicon glyphicon-home"></span>  Home</a></li>
                     <li><a asp-area="" asp-controller="Article" asp-action="Get">Articles</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
@@ -38,7 +38,7 @@
         </footer>
     </div>
     <script src="~/js/jquery.min.js"></script>
-        
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

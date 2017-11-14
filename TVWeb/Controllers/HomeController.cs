@@ -20,9 +20,12 @@ namespace ThiagoVivas.Controllers
         }
         public IActionResult Index()
         {
-            List<CreateArtigoViewMmodel> lstReturn = this._service.GetArtigos().OrderByDescending(x => x.Artigo.DataPublicacao).ToList();
-         
-            return View(lstReturn);
+            //List<CreateArtigoViewMmodel> lstReturn = this._service.GetArtigos().OrderByDescending(x => x.Artigo.DataPublicacao).ToList();
+
+            //return View(lstReturn);
+
+
+            return View(new List<CreateArtigoViewMmodel>());
         }
 
         public IActionResult Error()
